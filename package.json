@@ -1,0 +1,25 @@
+{
+	"name": "Gestore",
+	"version": "1.0.0",
+	"description": "RFID based VIT cafe interface",
+	"main": "server.js",
+	"repository": "https://github.com/Largonarco/Gestore.git",
+	"author": "Omkar N",
+	"license": "MIT",
+	"private": false,
+	"scripts": {
+		"start": "node server.js",
+		"build": "yarn && cd client && yarn "
+	},
+	"dependencies": {
+		"@fastify/cors": "^8.1.0",
+		"@fastify/jwt": "^6.3.2",
+		"@fastify/mongodb": "^6.1.0",
+		"@fastify/static": "^6.5.0",
+		"env-schema": "^5.1.0",
+		"fastify": "^4.7.0",
+		"fastify-plugin": "^4.2.1",
+		"nodemailer": "^6.8.0",
+		"stripe": "^10.13.0"
+	}
+}

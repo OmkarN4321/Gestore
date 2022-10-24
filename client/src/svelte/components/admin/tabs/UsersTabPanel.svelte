@@ -1,0 +1,253 @@
+<script>
+	import Accordion from "../../Accordion.svelte";
+
+	let user;
+	let email = "";
+	let error = "";
+	let newUser = { name: "", email: "", RFID: null };
+
+	const addUser = async () => {
+		let res = await fetch("http://localhost:5000/user", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ ...newUser, userType: { role: "User" } })
+		});
+
+		if (res.status === 500) {
+			error = await res.json();
+		} else if (res.status === 200) {
+			error = "";
+			newUser = { name: "", email: "", RFID: null };
+		}
+	};
+
+	const findUser = async () => {
+		let res = await fetch(`http://localhost:5000/user?email=${email}`);
+		res = await res.json();
+
+		if (res.user) {
+			user = res.user;
+		} else {
+			user = null;
+		}
+	};
+
+	const updateUser = async (id) => {
+		await fetch(`http://localhost:5000/user/${id}`, {
+			method: "PUT",
+			body: JSON.stringify(user),
+			headers: { "Content-Type": "application/json" }
+		});
+
+		user = null;
+	};
+
+	const deleteUser = async (id) => {
+		await fetch(`http://localhost:5000/user/${id}`, { method: "DELETE" });
+
+		user = null;
+	};
+</script>
+
+<div class="users-tab-panel">
+	<Accordion title="Add a new user">
+		<div class="add-user">
+			<div class="add-user-inputs">
+				<input class="input" type="text" placeholder="NEW USER'S NAME" bind:value={newUser.name} />
+				<input class="input" type="text" placeholder="NEW USER'S EMAIL" bind:value={newUser.email} />
+				<input class="input" type="number" placeholder="NEW USER'S RFID" bind:value={newUser.RFID} />
+			</div>
+
+			<div class="add-user-error-and-submit">
+				{#if error}
+					<div class="add-user-errors">
+						<p class="error">{error.message}</p>
+					</div>
+				{/if}
+
+				<button class="primary-button primary-solid-button" on:click={addUser}> Add user </button>
+			</div>
+		</div>
+	</Accordion>
+
+	<Accordion title="Modify an existing user">
+		<div class="modify-user">
+			<div class="find-user">
+				<input class="input find-user-input" type="text" placeholder="USER'S EMAIL" bind:value={email} />
+
+				<button class="find-user-btn primary-button primary-solid-button" on:click={findUser}>Find</button>
+			</div>
+
+			{#if user}
+				<div class="user">
+					<div class="user-data-display">
+						<div class="user-data-field">
+							<p class="user-data-field-name">Name:</p>
+							<input class="user-data-field-input" type="text" name="userName" bind:value={user.name} />
+						</div>
+						<div class="user-data-field">
+							<p class="user-data-field-name">Email:</p>
+							<input class="user-data-field-input" type="text" name="userEmail" placeholder="USER'S EMAIL" bind:value={user.email} />
+						</div>
+						<div class="user-data-field">
+							<p class="user-data-field-name">RFID:</p>
+							<input class="user-data-field-input" type="text" name="userRFID" placeholder="USER'S EMAIL" bind:value={user.RFID} />
+						</div>
+					</div>
+
+					<div class="user-data-options">
+						<button class="update-btn primary-button primary-outline-button" on:click={() => updateUser(user._id)}> Update </button>
+						<button class="delete-btn primary-button primary-outline-button" on:click={() => deleteUser(user._id)}> Delete </button>
+					</div>
+				</div>
+			{/if}
+		</div>
+	</Accordion>
+</div>
+
+<style>
+	.users-tab-panel {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.add-user {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 48px;
+	}
+
+	.add-user-inputs {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.input {
+		width: 100%;
+		height: 40px;
+		padding: 4px 8px;
+		border-radius: 4px;
+		border: 1px solid #9575cd;
+		font-size: 16px;
+		color: #eeeeee;
+		background-color: inherit;
+	}
+
+	.add-user-error-and-submit {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.add-user-errors {
+		width: 100%;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 4px;
+		border: 1px solid #e57373;
+		background-color: #d32f2f;
+		font-size: 16px;
+		font-weight: 400;
+	}
+
+	.modify-user {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 48px;
+	}
+
+	.find-user {
+		display: flex;
+		gap: 16px;
+	}
+
+	.find-user-input {
+		flex: 3;
+	}
+
+	.find-user-btn {
+		flex: 1;
+	}
+
+	.user {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.user-data-display {
+		width: 100%;
+		padding: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		border-radius: 8px;
+		background-color: #363636;
+	}
+
+	.user-data-field {
+		width: 100%;
+		display: flex;
+		gap: 8px;
+	}
+
+	.user-data-field-name {
+		font-size: 20px;
+		font-weight: 400;
+		color: #eeeeee;
+	}
+
+	.user-data-field-input {
+		padding: 0;
+		width: 100%;
+		border: none;
+		font-size: 20px;
+		color: white;
+		background-color: #363636;
+	}
+
+	.user-data-options {
+		display: flex;
+		gap: 16px;
+	}
+
+	.update-btn {
+		border: 1px solid #ffd54f !important;
+	}
+
+	.delete-btn {
+		border: 1px solid #e57373 !important;
+	}
+
+	.primary-button {
+		width: 100%;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 16px;
+		border-radius: 4px;
+	}
+
+	.primary-solid-button {
+		border: 1px solid #9575cd;
+		background-color: #512da8;
+	}
+
+	.primary-outline-button {
+		border: 1px solid #9575cd;
+	}
+
+	.primary-button:hover {
+		transform: scale(1.05);
+		transition: all 0.15s ease-in-out;
+	}
+</style>

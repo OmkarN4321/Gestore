@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"moduleResolution": "Node",
+		"target": "ESNext",
+		"module": "ESNext",
+		"isolatedModules": true,
+		"resolveJsonModule": true,
+		"sourceMap": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"baseUrl": "."
+	},
+	/**
+	 * Use global.d.ts instead of compilerOptions.types
+	 * to avoid limiting type declarations.
+	 */
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
+}
