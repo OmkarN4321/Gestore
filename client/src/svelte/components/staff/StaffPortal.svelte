@@ -4,18 +4,18 @@
 	let orders;
 
 	const getItem = async (id) => {
-		let res = await fetch(`http://localhost:5000/items/${id}`);
+		let res = await fetch(`https://pear-swallow-cap.cyclic.app:5000/items/${id}`);
 		res = await res.json();
 
 		return res.item;
 	};
 
 	const orderDone = async (id) => {
-		await fetch(`http://localhost:5000/orders/${id}`, { method: "DELETE" });
+		await fetch(`https://pear-swallow-cap.cyclic.app:5000/orders/${id}`, { method: "DELETE" });
 	};
 
 	onMount(async () => {
-		let res = await fetch("http://localhost:5000/orders");
+		let res = await fetch("https://pear-swallow-cap.cyclic.app:5000/orders");
 		res = await res.json();
 
 		orders = res.orders;

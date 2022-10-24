@@ -19,7 +19,7 @@
 	};
 
 	onMount(async () => {
-		let res = await fetch("http://localhost:5000/items");
+		let res = await fetch("https://pear-swallow-cap.cyclic.app:5000/items");
 		res = await res.json();
 
 		items = res.items;

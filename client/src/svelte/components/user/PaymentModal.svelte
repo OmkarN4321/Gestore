@@ -35,7 +35,7 @@
 
 		stripe = await loadStripe(import.meta.env.VITE_PUBLIC_STRIPE_KEY);
 
-		let res = await fetch("http://localhost:5000/paymentIntent", {
+		let res = await fetch("https://pear-swallow-cap.cyclic.app:5000/paymentIntent", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ user: { name, email }, list })
