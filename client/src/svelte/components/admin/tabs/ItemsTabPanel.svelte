@@ -7,7 +7,7 @@
 	let newItem = { name: "", price: 0 };
 
 	const addItem = async () => {
-		let res = await fetch("https://pear-swallow-cap.cyclic.app:5000/items", {
+		let res = await fetch("https://pear-swallow-cap.cyclic.app/items", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(newItem)
@@ -22,7 +22,7 @@
 	};
 
 	const updateItem = async (item) => {
-		await fetch(`https://pear-swallow-cap.cyclic.app:5000/items/${item._id}`, {
+		await fetch(`https://pear-swallow-cap.cyclic.app/items/${item._id}`, {
 			method: "PUT",
 			body: JSON.stringify(item),
 			headers: { "Content-Type": "application/json" }
@@ -30,11 +30,11 @@
 	};
 
 	const deleteItem = async (item) => {
-		await fetch(`https://pear-swallow-cap.cyclic.app:5000/items/${item._id}`, { method: "DELETE" });
+		await fetch(`https://pear-swallow-cap.cyclic.app/items/${item._id}`, { method: "DELETE" });
 	};
 
 	onMount(async () => {
-		let res = await fetch("https://pear-swallow-cap.cyclic.app:5000/items");
+		let res = await fetch("https://pear-swallow-cap.cyclic.app/items");
 		res = await res.json();
 
 		items = res.items;

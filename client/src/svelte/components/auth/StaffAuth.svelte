@@ -8,7 +8,7 @@
 
 	const login = async () => {
 		if (email && password) {
-			let res = await fetch(`https://pear-swallow-cap.cyclic.app:5000/staffLogin?email=${email}&password=${password}`);
+			let res = await fetch(`https://pear-swallow-cap.cyclic.app/staffLogin?email=${email}&password=${password}`);
 			res = await res.json();
 
 			if (res.user) {
