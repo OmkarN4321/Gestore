@@ -31,7 +31,7 @@ const serve = () => {
 const run = async () => {
 	try {
 		await fastify.ready();
-		await fastify.listen({ port: 5000 });
+		await fastify.listen({ port: process.env.PORT });
 	} catch (error) {
 		fastify.log.error(error);
 		process.exit(1);
