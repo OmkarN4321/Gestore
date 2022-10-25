@@ -19,7 +19,7 @@ async function getOrders(req, reply) {
 
 async function addOrder(req, reply) {
 	try {
-		const stripeData = req.body.raw;
+		const stripeData = req.rawBody;
 		const stripeSig = req.headers["stripe-signature"];
 		const webhookSecret = this.config.WEBHOOK_SECRET;
 
@@ -70,7 +70,7 @@ async function removeOrder(req, reply) {
 
 async function paymentIntent(req, reply) {
 	try {
-		const { list, user } = req.body.parsed;
+		const { list, user } = req.body;
 
 		let amount = 0;
 		let metadata = { userName: user.name, userEmail: user.email };
