@@ -8,7 +8,7 @@
 
 	const login = async () => {
 		if (email && password) {
-			let res = await fetch(`https://gestore-production.up.railway.app/staffLogin?email=${email}&password=${password}`);
+			let res = await fetch(`https://gestore.up.railway.app/staffLogin?email=${email}&password=${password}`);
 			res = await res.json();
 
 			if (res.user) {

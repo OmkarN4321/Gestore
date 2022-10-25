@@ -7,7 +7,7 @@
 	let newItem = { name: "", price: 0 };
 
 	const addItem = async () => {
-		let res = await fetch("https://gestore-production.up.railway.app/items", {
+		let res = await fetch("https://gestore.up.railway.app/items", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(newItem)
@@ -22,7 +22,7 @@
 	};
 
 	const updateItem = async (item) => {
-		await fetch(`https://gestore-production.up.railway.app/items/${item._id}`, {
+		await fetch(`https://gestore.up.railway.app/items/${item._id}`, {
 			method: "PUT",
 			body: JSON.stringify(item),
 			headers: { "Content-Type": "application/json" }
@@ -30,11 +30,11 @@
 	};
 
 	const deleteItem = async (item) => {
-		await fetch(`https://gestore-production.up.railway.app/items/${item._id}`, { method: "DELETE" });
+		await fetch(`https://gestore.up.railway.app/items/${item._id}`, { method: "DELETE" });
 	};
 
 	onMount(async () => {
-		let res = await fetch("https://gestore-production.up.railway.app/items");
+		let res = await fetch("https://gestore.up.railway.app/items");
 		res = await res.json();
 
 		items = res.items;
