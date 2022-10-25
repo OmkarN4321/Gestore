@@ -19,7 +19,7 @@
 	};
 
 	onMount(async () => {
-		let res = await fetch("https://gestore-production.up.railway.app//items");
+		let res = await fetch("https://gestore-production.up.railway.app/items");
 		res = await res.json();
 
 		items = res.items;
