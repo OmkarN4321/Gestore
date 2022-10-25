@@ -76,6 +76,13 @@ const paymentIntentOpts = {
 };
 
 const orderRoutes = (fastify, options, done) => {
+	fastify.addContentTypeParser("application/json", { parseAs: "string" }, (req, payload, done) => {
+		done(null, {
+			raw: payload,
+			parsed: JSON.parse(payload),
+		});
+	});
+
 	// Order routes
 	fastify.get("/orders", { ...getOrdersOpts, onRequest: [fastify.verify] });
 
