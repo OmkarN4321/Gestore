@@ -19,13 +19,9 @@ async function getOrders(req, reply) {
 
 async function addOrder(req, reply) {
 	try {
-		const stripeData = req.body;
+		const stripeData = req.raw.body;
 		const stripeSig = req.headers["stripe-signature"];
 		const webhookSecret = this.config.WEBHOOK_SECRET;
-
-		console.log(stripeData);
-		console.log(stripeSig);
-		console.log(webhookSecret);
 
 		const event = await this.stripe.webhooks.constructEvent(stripeData, stripeSig, webhookSecret);
 
