@@ -9,7 +9,7 @@
 	"private": false,
 	"scripts": {
 		"start": "node server.js",
-		"build": "npm i && cd client && npm i "
+		"build": "yarn && cd client && yarn"
 	},
 	"dependencies": {
 		"@fastify/cors": "^8.1.0",
