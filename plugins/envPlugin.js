@@ -16,15 +16,18 @@ const fastifyEnv = (fastify, opts, done) => {
 const envPlugin = (fastify) => {
 	const envSchema = {
 		type: "object",
-		required: ["STRIPE_SECRET", "MONGO_URL", "JWT_SECRET", "AUTH_EMAIL", "AUTH_PASS"],
+		required: ["STRIPE_SECRET", "WEBHOOK_SECRET", "JWT_SECRET", "MONGO_URL", "AUTH_EMAIL", "AUTH_PASS"],
 		properties: {
 			STRIPE_SECRET: {
 				type: "string",
 			},
-			MONGO_URL: {
+			WEBHOOK_SECRET: {
 				type: "string",
 			},
 			JWT_SECRET: {
+				type: "string",
+			},
+			MONGO_URL: {
 				type: "string",
 			},
 			AUTH_EMAIL: {
