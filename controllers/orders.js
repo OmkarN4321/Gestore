@@ -23,6 +23,10 @@ async function addOrder(req, reply) {
 		const stripeSig = req.headers["stripe-signature"];
 		const webhookSecret = this.config.WEBHOOK_SECRET;
 
+		console.log(stripeData);
+		console.log(stripeSig);
+		console.log(webhookSecret);
+
 		const event = await this.stripe.webhooks.constructEvent(stripeData, stripeSig, webhookSecret);
 
 		if (event && event.type === "payment_intent.succeeded") {
