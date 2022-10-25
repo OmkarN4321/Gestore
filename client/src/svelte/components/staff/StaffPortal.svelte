@@ -4,18 +4,18 @@
 	let orders;
 
 	const getItem = async (id) => {
-		let res = await fetch(`https://pear-swallow-cap.cyclic.app/items/${id}`);
+		let res = await fetch(`https://gestore-production.up.railway.app//items/${id}`);
 		res = await res.json();
 
 		return res.item;
 	};
 
 	const orderDone = async (id) => {
-		await fetch(`https://pear-swallow-cap.cyclic.app/orders/${id}`, { method: "DELETE" });
+		await fetch(`https://gestore-production.up.railway.app//orders/${id}`, { method: "DELETE" });
 	};
 
 	onMount(async () => {
-		let res = await fetch("https://pear-swallow-cap.cyclic.app/orders");
+		let res = await fetch("https://gestore-production.up.railway.app//orders");
 		res = await res.json();
 
 		orders = res.orders;

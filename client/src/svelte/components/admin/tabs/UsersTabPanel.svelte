@@ -7,7 +7,7 @@
 	let newUser = { name: "", email: "", RFID: null };
 
 	const addUser = async () => {
-		let res = await fetch("https://pear-swallow-cap.cyclic.app/user", {
+		let res = await fetch("https://gestore-production.up.railway.app//user", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ ...newUser, userType: { role: "User" } })
@@ -22,7 +22,7 @@
 	};
 
 	const findUser = async () => {
-		let res = await fetch(`https://pear-swallow-cap.cyclic.app/user?email=${email}`);
+		let res = await fetch(`https://gestore-production.up.railway.app//user?email=${email}`);
 		res = await res.json();
 
 		if (res.user) {
@@ -33,7 +33,7 @@
 	};
 
 	const updateUser = async (id) => {
-		await fetch(`https://pear-swallow-cap.cyclic.app/user/${id}`, {
+		await fetch(`https://gestore-production.up.railway.app//user/${id}`, {
 			method: "PUT",
 			body: JSON.stringify(user),
 			headers: { "Content-Type": "application/json" }
@@ -43,7 +43,7 @@
 	};
 
 	const deleteUser = async (id) => {
-		await fetch(`https://pear-swallow-cap.cyclic.app/user/${id}`, { method: "DELETE" });
+		await fetch(`https://gestore-production.up.railway.app//user/${id}`, { method: "DELETE" });
 
 		user = null;
 	};
