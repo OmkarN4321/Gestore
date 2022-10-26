@@ -30,7 +30,7 @@ async function addOrder(req, reply) {
 				metadata: { userName, userEmail, ...listItems },
 			} = event.data.object;
 			console.log(listItems);
-			const order = { user: { name: userName, email: userEmail }, list: listItems.values() };
+			const order = { user: { name: userName, email: userEmail }, list: Object.values(listItems) };
 
 			const orders = this.mongo.db.collection("orders");
 			await orders.insertOne(order);
