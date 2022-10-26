@@ -29,6 +29,7 @@ async function addOrder(req, reply) {
 			const {
 				metadata: { userName, userEmail, ...listItems },
 			} = event.data.object;
+			console.log(listItems);
 			const order = { user: { name: userName, email: userEmail }, list: listItems.values() };
 
 			const orders = this.mongo.db.collection("orders");
