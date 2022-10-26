@@ -110,7 +110,7 @@
 		gap: 8px;
 	}
 
-	.order-no {
+	.ordered-by {
 		font-size: 20px;
 		font-weight: 400;
 		color: #eeeeee;
