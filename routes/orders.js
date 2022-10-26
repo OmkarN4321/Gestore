@@ -76,12 +76,15 @@ const paymentIntentOpts = {
 };
 
 const orderRoutes = (fastify, options, done) => {
+	fastify.addContentTypeParser("application/json", { parseAs: "string" }, (req, payload, done) => {
+		console.log(payload);
+	});
 	// Order routes
 	fastify.get("/orders", { ...getOrdersOpts, onRequest: [fastify.verify] });
 
 	fastify.post("/paymentIntent", { ...paymentIntentOpts, onRequest: [fastify.verify] });
 
-	fastify.post("/orders", { ...addOrderOpts, config: { rawBody: true } });
+	fastify.post("/orders", { ...addOrderOpts });
 
 	fastify.delete("/orders/:id", { ...removeOrderOpts, onRequest: [fastify.verify] });
 
