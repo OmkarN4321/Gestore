@@ -3,10 +3,8 @@ const OrderSchema = {
 	additionalProperties: false,
 	properties: {
 		_id: { type: "string" },
-		user: { type: "string" },
-		amount: { type: "number" },
-		orderNo: { type: "number" },
-		items: { type: "array", items: { type: "string" } },
+		list: { type: "array", items: { type: "string" } },
+		user: { type: "object", properties: { name: { type: "string" }, email: { type: "string" } } },
 	},
 };
 
