@@ -2,11 +2,13 @@
 	import { onMount } from "svelte";
 
 	let orders;
+	let amount;
 
 	const getItem = async (id) => {
 		let res = await fetch(`https://gestore.up.railway.app/items/${id}`);
 		res = await res.json();
 
+		amount += res.item.price;
 		return res.item;
 	};
 
@@ -31,8 +33,8 @@
 				<div class="order">
 					<div class="order-details">
 						<div class="order-imp-details">
-							<p class="order-no">Order no: {order.orderNo}</p>
-							<p class="order-price">Price: {order.amount} ₹</p>
+							<p class="ordered-by">Order no: {order.user.name}</p>
+							<p class="order-price">Price: {amount} ₹</p>
 						</div>
 
 						<div class="order-options">
@@ -47,7 +49,7 @@
 					</div>
 
 					<div class="ordered-items">
-						{#each order.items as id}
+						{#each order.list as id}
 							{#await getItem(id) then item}
 								<div class="item">
 									<h2 class="item-name"># {item.name}</h2>
