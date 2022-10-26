@@ -17,7 +17,7 @@ async function userLogin(req, reply) {
 			);
 
 			const token = this.jwt.sign({ role: user.userType.role });
-			reply.header("set-cookie", `token=${token}; HttpOnly`);
+			reply.header("set-cookie", `token=${token}; HttpOnly; Secure`);
 
 			delete user._id;
 			delete user.RFID;
@@ -42,7 +42,7 @@ async function adminLogin(req, reply) {
 
 		if (user && user.userType.role === "Admin" && user.userType.password === password) {
 			const token = this.jwt.sign({ role: user.userType.role });
-			reply.header("set-cookie", `token=${token}; HttpOnly`);
+			reply.header("set-cookie", `token=${token}; HttpOnly; Secure`);
 
 			delete user._id;
 			delete user.RFID;
@@ -67,7 +67,7 @@ async function staffLogin(req, reply) {
 
 		if (user && user.userType.role === "Staff" && user.userType.password === password) {
 			const token = this.jwt.sign({ role: user.userType.role });
-			reply.header("set-cookie", `token=${token}; HttpOnly`);
+			reply.header("set-cookie", `token=${token}; HttpOnly; Secure`);
 
 			delete user._id;
 			delete user.RFID;

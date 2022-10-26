@@ -4,6 +4,7 @@ const mongoPlugin = require("./plugins/mongoPlugin");
 const mailerPlugin = require("./plugins/mailerPlugin");
 const stripePlugin = require("./plugins/stripePlugin");
 const staticPlugin = require("./plugins/staticPlugin");
+const rawBodyPlugin = require("./plugins/rawBodyPlugin");
 
 const fastify = require("fastify")({ logger: true });
 
@@ -15,6 +16,7 @@ const init = async () => {
 	mailerPlugin(fastify);
 	stripePlugin(fastify);
 	staticPlugin(fastify);
+	rawBodyPlugin(fastify);
 
 	fastify.register(require("./routes/auth"));
 	fastify.register(require("./routes/users"));
