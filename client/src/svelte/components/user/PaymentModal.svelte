@@ -20,10 +20,8 @@
 				redirect: "if_required"
 			});
 
-			console.log(error);
-
 			if (error) {
-				feedback = { type: "failure", message: error };
+				feedback = { type: "failure", message: error.message };
 				loading = false;
 			} else if (paymentIntent && paymentIntent.status === "succeeded") {
 				feedback = { type: "success", message: "Payment succesful" };
