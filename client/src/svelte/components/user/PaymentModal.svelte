@@ -20,6 +20,8 @@
 				redirect: "if_required"
 			});
 
+			console.log(error);
+
 			if (error) {
 				feedback = { type: "failure", message: error };
 				loading = false;
