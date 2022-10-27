@@ -49,13 +49,13 @@ async function removeOrder(req, reply) {
 
 		if (role === "Staff") {
 			const orders = this.mongo.db.collection("orders");
-			const { orderNo, user } = await orders.findOne({ _id: ObjectId(id) });
+			const { user } = await orders.findOne({ _id: ObjectId(id) });
 
 			await this.mailer.sendMail({
 				from: this.config.AUTH_EMAIL,
-				to: user,
+				to: user.email,
 				subject: "Verification mail",
-				html: `<p>Your order with order no. ${orderNo} is ready </p>`,
+				html: `<p>Collect your order at the counter </p>`,
 			});
 
 			await orders.deleteOne({ _id: ObjectId(id) });
@@ -80,18 +80,18 @@ async function paymentIntent(req, reply) {
 			const menu = this.mongo.db.collection("menu");
 			const item = await menu.findOne({ _id: ObjectId(list[i]) });
 
-			amount += item.price;
+			amount += item.price * 100;
 			metadata[`item${i + 1}`] = list[i];
 		}
 
-		const paymentIntent = await this.stripe.paymentIntents.create({
-			amount: amount * 100,
+		const { client_secret } = await this.stripe.paymentIntents.create({
+			amount,
 			metadata,
 			currency: "inr",
 			automatic_payment_methods: { enabled: true },
 		});
 
-		reply.code(200).send({ client_secret: paymentIntent.client_secret });
+		reply.code(200).send({ client_secret });
 	} catch ({ message }) {
 		reply.code(500).send({ message });
 	}

@@ -79,11 +79,11 @@ const orderRoutes = (fastify, options, done) => {
 	// Order routes
 	fastify.get("/orders", { ...getOrdersOpts, onRequest: [fastify.verify] });
 
-	fastify.post("/paymentIntent", { ...paymentIntentOpts, onRequest: [fastify.verify] });
-
 	fastify.post("/orders", { ...addOrderOpts, config: { rawBody: true } });
 
 	fastify.delete("/orders/:id", { ...removeOrderOpts, onRequest: [fastify.verify] });
+
+	fastify.post("/paymentIntent", { ...paymentIntentOpts, onRequest: [fastify.verify] });
 
 	done();
 };
