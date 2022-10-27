@@ -21,10 +21,10 @@
 			});
 
 			if (error) {
-				feedback = { type: "failure", message: error.message };
+				feedback = { type: "failure", message: "Payment failed" };
 				loading = false;
 			} else if (paymentIntent && paymentIntent.status === "succeeded") {
-				feedback = { type: "success", message: "Payment succesful" };
+				feedback = { type: "success", message: "Payment successful" };
 				loading = false;
 			}
 		}
