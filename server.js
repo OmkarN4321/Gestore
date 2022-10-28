@@ -40,8 +40,6 @@ const run = async () => {
 	}
 };
 
-//Redeploy
-
 serve();
 init();
 run();
