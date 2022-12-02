@@ -26,7 +26,7 @@ void setup() {
   rfid.PCD_Init();                                // Init MFRC522
 
   WiFi.mode(WIFI_STA);                            // Init WIFI
-  WiFiMulti.addAP("ssid", "password");
+  WiFiMulti.addAP("ssid", "pass");
 
   delay(10000);
 
