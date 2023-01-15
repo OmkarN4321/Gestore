@@ -48,10 +48,10 @@
 
 <div class="modal-background">
 	<div class="modal">
-		<div class="modal-header">
-			<h3 class="modal-title">Payment modal</h3>
+		<div class="modal__header">
+			<h3 class="modal__header__title">Payment modal</h3>
 
-			<button class="modal-cancel-btn" on:click={setModal}>
+			<button class="modal__header__cancel-btn" on:click={setModal}>
 				<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
 					<path
 						fill="#eeeeee"
@@ -60,14 +60,14 @@
 		</div>
 
 		{#if stripe && clientSecret}
-			<div class="modal-content">
+			<div class="modal__content">
 				<Elements theme="night" labels="floating" {stripe} {clientSecret} bind:elements>
 					<LinkAuthenticationElement />
 					<PaymentElement />
 				</Elements>
 			</div>
 
-			<div class="modal-footer">
+			<div class="modal__footer">
 				{#if feedback}
 					<div class="feedback" style=" {feedback.type === 'success' ? 'background-color: #388e3c; border-color: #81c784' : ''} ;">
 						<p class="feedback-msg">
@@ -98,33 +98,33 @@
 	}
 
 	.modal {
-		margin: 16px;
+		margin: 1rem;
 		width: 600px;
-		padding: 16px;
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 48px;
-		border-radius: 8px;
+		gap: 3rem;
+		border-radius: 0.5rem;
 		background-color: #363636;
 	}
 
-	.modal-header {
+	.modal__header {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
 	}
 
-	.modal-title {
-		font-size: 20px;
+	.modal__header__title {
+		font-size: 1rem;
 		font-weight: 600;
 		color: #eeeeee;
 	}
 
-	.modal-footer {
+	.modal__footer {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
 	.feedback {
@@ -133,10 +133,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		border: 1px solid #e57373;
 		background-color: #d32f2f;
-		font-size: 16px;
+		font-size: 1rem;
 		font-weight: 400;
 	}
 
@@ -146,8 +146,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 16px;
-		border-radius: 4px;
+		font-size: 1rem;
+		border-radius: 0.25rem;
 	}
 
 	.primary-solid-button {

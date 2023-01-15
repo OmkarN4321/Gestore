@@ -3,7 +3,7 @@
 	export let title;
 </script>
 
-<div class="accordion-component">
+<div class="accordion">
 	<button class="accordion-toggle-button" on:click={() => (toggle = !toggle)}>
 		{#if toggle}
 			<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
@@ -28,19 +28,19 @@
 </div>
 
 <style>
-	.accordion-component {
+	.accordion {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
 	.accordion-toggle-button {
-		padding: 16px 0;
+		padding: 1rem 0;
 		width: 100%;
 		display: flex;
-		gap: 16px;
-		font-size: 20px;
+		gap: 1rem;
+		font-size: 1.25rem;
 		font-weight: 400;
 		border: none;
 		border-bottom: 1px solid #bdbdbd;

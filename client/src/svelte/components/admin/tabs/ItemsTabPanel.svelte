@@ -41,7 +41,7 @@
 	});
 </script>
 
-<div class="items-tab-panel">
+<div class="admin-portal__items-tab-panel">
 	<Accordion title="Add a new item">
 		<div class="add-item">
 			<div class="add-item-inputs">
@@ -89,7 +89,7 @@
 </div>
 
 <style>
-	.items-tab-panel {
+	.admin-portal__items-tab-panel {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -99,23 +99,23 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 48px;
+		gap: 3rem;
 	}
 
 	.add-item-inputs {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
 	.input {
 		width: 100%;
 		height: 40px;
-		padding: 4px 8px;
-		border-radius: 4px;
+		padding: 0.25rem 0.5rem;
+		border-radius: 0.25rem;
 		border: 1px solid #9575cd;
-		font-size: 16px;
+		font-size: 1rem;
 		color: #eeeeee;
 		background-color: inherit;
 	}
@@ -124,7 +124,7 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
 	.add-item-errors {
@@ -133,10 +133,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		border: 1px solid #e57373;
 		background-color: #d32f2f;
-		font-size: 16px;
+		font-size: 1rem;
 		font-weight: 400;
 	}
 
@@ -144,33 +144,33 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
 	.item {
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
 	.item-data-display {
 		width: 100%;
-		padding: 16px;
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-		border-radius: 8px;
+		gap: 0.5rem;
+		border-radius: 0.5rem;
 		background-color: #363636;
 	}
 
 	.item-data-field {
 		width: 100%;
 		display: flex;
-		gap: 8px;
+		gap: 0.5rem;
 	}
 
 	.item-data-field-name {
-		font-size: 20px;
+		font-size: 1.25rem;
 		font-weight: 400;
 		color: #eeeeee;
 	}
@@ -179,14 +179,14 @@
 		width: 100%;
 		border: none;
 		background-color: #363636;
-		font-size: 20px;
+		font-size: 1.25rem;
 		padding: 0;
 		color: white;
 	}
 
 	.item-data-options {
 		display: flex;
-		gap: 16px;
+		gap: 1rem;
 	}
 
 	.update-btn {
@@ -203,8 +203,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 16px;
-		border-radius: 4px;
+		font-size: 1rem;
+		border-radius: 0.25rem;
 	}
 
 	.primary-solid-button {

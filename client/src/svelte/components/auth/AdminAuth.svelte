@@ -24,17 +24,17 @@
 </script>
 
 <div class="auth">
-	<div class="login">
-		<h1 class="app-title">Gestore</h1>
+	<div class="auth-login">
+		<h1 class="auth-login__title">Gestore</h1>
 
-		<div class="login-inputs">
-			<input type="text" placeholder="ADMIN EMAIL" class="login-input" bind:value={email} />
-			<input type="password" placeholder="ADMIN PASSWORD" class="login-input" bind:value={password} />
+		<div class="auth-login__inputs">
+			<input type="text" placeholder="EMAIL" class="auth-login__input" bind:value={email} />
+			<input type="password" placeholder="PASSWORD" class="auth-login__input" bind:value={password} />
 		</div>
 
-		<div class="login-errors-and-buttons">
+		<div class="auth-login__errors-and-buttons">
 			{#if error}
-				<div class="login-errors">
+				<div class="auth-login__errors">
 					<p class="error">{error}</p>
 				</div>
 			{/if}
@@ -43,7 +43,7 @@
 		</div>
 	</div>
 
-	<div class="auth-alternate-buttons">
+	<div class="auth-alt-buttons">
 		<button class="primary-button primary-outline-button" on:click={() => setState("staff")}> Staff Login </button>
 		<button class="primary-button primary-outline-button" on:click={() => setState("user")}> User Login </button>
 	</div>
@@ -53,69 +53,69 @@
 	.auth {
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
-	.login {
+	.auth-login {
 		width: 300px;
-		padding: 16px;
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 48px;
-		border-radius: 8px;
+		gap: 3rem;
+		border-radius: 0.5rem;
 		background-color: #363636;
 	}
 
-	.app-title {
-		font-size: 44px;
+	.auth-login__title {
+		font-size: 2.75rem;
 		font-weight: 600;
 		color: #673ab7;
 	}
 
-	.login-inputs {
+	.auth-login__inputs {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
-	.login-input {
+	.auth-login__input {
 		width: 100%;
 		height: 40px;
-		padding: 4px 8px;
-		border-radius: 4px;
+		padding: 0.25rem 0.5rem;
+		border-radius: 0.25rem;
 		border: 1px solid #9575cd;
-		font-size: 16px;
+		font-size: 1rem;
 		color: #eeeeee;
 		background-color: inherit;
 	}
 
-	.login-errors-and-buttons {
+	.auth-login__errors-and-buttons {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
-	.login-errors {
+	.auth-login__errors {
 		width: 100%;
 		height: 40px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		border: 1px solid #e57373;
 		background-color: #d32f2f;
-		font-size: 16px;
+		font-size: 1rem;
 		font-weight: 400;
 	}
 
-	.auth-alternate-buttons {
+	.auth-alt-buttons {
 		width: 300px;
 		display: flex;
-		gap: 16px;
+		gap: 1rem;
 	}
 
 	.primary-button {
@@ -124,8 +124,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 16px;
-		border-radius: 4px;
+		font-size: 1rem;
+		border-radius: 0.25rem;
 	}
 
 	.primary-solid-button {

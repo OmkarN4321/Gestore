@@ -10,7 +10,7 @@
 	};
 </script>
 
-<main class="home-page">
+<main class="auth-page">
 	{#if state === "user"}
 		<UserAuth {setState} />
 	{:else if state === "admin"}
@@ -21,7 +21,7 @@
 </main>
 
 <style>
-	.home-page {
+	.auth-page {
 		width: 100vw;
 		height: 100vh;
 		display: flex;

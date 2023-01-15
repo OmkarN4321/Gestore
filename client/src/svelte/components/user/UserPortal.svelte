@@ -27,18 +27,18 @@
 </script>
 
 <div class="user-portal">
-	<h1 class="user-portal-title">User Portal</h1>
+	<h1 class="user-portal__title">User Portal</h1>
 
-	<div class="menu">
+	<div class="user-portal__menu">
 		{#if items}
 			{#each items as item (item._id)}
-				<div class="item">
-					<div class="item-details">
-						<h2 class="item-name"># {item.name}</h2>
-						<p class="item-price">₹ {item.price}</p>
+				<div class="user-portal__menu__item">
+					<div class="user-portal__menu__item__details">
+						<h2 class="user-portal__menu__item__details__name"># {item.name}</h2>
+						<p class="user-portal__menu__item__details__price">₹ {item.price}</p>
 					</div>
 
-					<div class="item-options">
+					<div class="user-portal__menu__item__options">
 						{#if !list.includes(item._id)}
 							<button class="push-to-list primary-button primary-outline-button" on:click={() => pushToList(item._id)}>
 								<svg xmlns="http://www.w3.org/2000/svg" height="40" width="40">
@@ -73,74 +73,74 @@
 
 <style>
 	.user-portal {
-		margin: 16px;
+		margin: 1rem;
 		width: 600px;
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 48px;
+		gap: 3rem;
 	}
 
-	.user-portal-title {
-		font-size: 44px;
+	.user-portal__title {
+		font-size: 2.75rem;
 		font-weight: 600;
 		color: #673ab7;
 	}
 
-	.menu {
+	.user-portal__menu {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
-	.item {
+	.user-portal__menu__item {
 		width: 100%;
-		padding: 16px;
+		padding: 1rem;
 		display: flex;
-		border-radius: 8px;
+		border-radius: 0.5rem;
 		background-color: #363636;
 	}
 
-	.item-details {
+	.user-portal__menu__item__details {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 0.5rem;
 	}
 
-	.item-name {
-		font-size: 20px;
+	.user-portal__menu__item__details__name {
+		font-size: 1.25rem;
 		font-weight: 600;
 		color: #eeeeee;
 	}
 
-	.item-price {
-		font-size: 20px;
+	.user-portal__menu__item__details__price {
+		font-size: 1.25rem;
 		font-weight: 400;
 		color: #eeeeee;
 	}
 
-	.item-options {
+	.user-portal__menu__item__options {
 		display: flex;
 		align-items: center;
 	}
 
 	.push-to-list {
 		height: 100% !important;
-		padding: 0 4px;
+		padding: 0 0.25rem;
 	}
 
 	.pop-from-list {
 		height: 100% !important;
-		padding: 0 4px;
+		padding: 0 0.25rem;
 		border: 1px solid #e57373 !important;
 	}
 
 	.order-the-list {
 		position: sticky;
-		bottom: 16px;
+		bottom: 1rem;
 		left: 0;
 		right: 0;
 		box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
@@ -152,8 +152,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 16px;
-		border-radius: 4px;
+		font-size: 1rem;
+		border-radius: 0.25rem;
 	}
 
 	.primary-solid-button {

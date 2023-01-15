@@ -25,19 +25,19 @@
 </script>
 
 <div class="staff-portal">
-	<h1 class="staff-portal-title">Staff Portal</h1>
+	<h1 class="staff-portal__title">Staff Portal</h1>
 
-	<div class="orders">
+	<div class="staff-portal__orders">
 		{#if orders}
 			{#each orders as order (order._id)}
-				<div class="order">
-					<div class="order-details">
-						<div class="order-imp-details">
-							<p class="ordered-by">Ordered by: {order.user.name}</p>
-							<p class="order-price">Price: {amount} ₹</p>
+				<div class="staff-portal__orders__order">
+					<div class="staff-portal__orders__order__details">
+						<div class="staff-portal__orders__order__details__imp">
+							<p class="staff-portal__orders__order__details__imp__ordered-by">Ordered by: {order.user.name}</p>
+							<p class="staff-portal__orders__order__details__imp__price">Price: {amount} ₹</p>
 						</div>
 
-						<div class="order-options">
+						<div class="staff-portal__orders__order__details__options">
 							<button class="order-completed-btn primary-button primary-solid-button" on:click={() => orderDone(order._id)}>
 								<svg xmlns="http://www.w3.org/2000/svg" height="40" width="40">
 									<path
@@ -48,12 +48,12 @@
 						</div>
 					</div>
 
-					<div class="ordered-items">
+					<div class="staff-portal__orders__order__ordered-items">
 						{#each order.list as id}
 							{#await getItem(id) then item}
-								<div class="item">
-									<h2 class="item-name"># {item.name}</h2>
-									<p class="item-price">₹ {item.price}</p>
+								<div class="staff-portal__orders__order__ordered-items__item">
+									<h2 class="staff-portal__orders__order__ordered-items__item__item-name"># {item.name}</h2>
+									<p class="staff-portal__orders__order__ordered-items__item__item-price">₹ {item.price}</p>
 								</div>
 							{/await}
 						{/each}
@@ -66,96 +66,96 @@
 
 <style>
 	.staff-portal {
-		margin: 16px;
+		margin: 1rem;
 		width: 600px;
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 48px;
+		gap: 3rem;
 	}
 
-	.staff-portal-title {
-		font-size: 44px;
+	.staff-portal__title {
+		font-size: 2.75rem;
 		font-weight: 600;
 		color: #673ab7;
 	}
 
-	.orders {
+	.staff-portal__orders {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
-	.order {
+	.staff-portal__orders__order {
 		width: 100%;
-		padding: 16px;
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
-		border-radius: 8px;
+		gap: 1rem;
+		border-radius: 0.5rem;
 		background-color: #363636;
 	}
 
-	.order-details {
+	.staff-portal__orders__order__details {
 		width: 100%;
 		display: flex;
 	}
 
-	.order-imp-details {
+	.staff-portal__orders__order__details__imp {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 0.5rem;
 	}
 
-	.ordered-by {
-		font-size: 20px;
+	.staff-portal__orders__order__details__imp__ordered-by {
+		font-size: 1.25rem;
 		font-weight: 400;
 		color: #eeeeee;
 	}
 
-	.order-price {
-		font-size: 20px;
+	.staff-portal__orders__order__details__imp__ordered-by {
+		font-size: 1.25rem;
 		font-weight: 400;
 		color: #eeeeee;
 	}
 
-	.order-options {
+	.staff-portal__orders__order__details__options {
 		display: flex;
 		align-items: center;
 	}
 
 	.order-completed-btn {
 		height: 100% !important;
-		padding: 0 4px;
+		padding: 0 0.25rem;
 	}
 
-	.ordered-items {
-		padding: 8px;
+	.staff-portal__orders__order__ordered-items {
+		padding: 0.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 0.5rem;
 		border: 1px solid #bdbdbd;
-		border-radius: 4px;
+		border-radius: 0.25rem;
 	}
 
-	.item {
+	.staff-portal__orders__order__ordered-items__item {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 0.5rem;
 	}
 
-	.item-name {
-		font-size: 16px;
+	.staff-portal__orders__order__ordered-items__item__item-name {
+		font-size: 1rem;
 		font-weight: 600;
 		color: #eeeeee;
 	}
 
-	.item-price {
-		font-size: 16px;
+	.staff-portal__orders__order__ordered-items__item__item-price {
+		font-size: 1rem;
 		font-weight: 400;
 		color: #eeeeee;
 	}
@@ -166,8 +166,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 16px;
-		border-radius: 4px;
+		font-size: 1rem;
+		border-radius: 0.25rem;
 	}
 
 	.primary-solid-button {
